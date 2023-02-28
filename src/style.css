@@ -1,0 +1,9 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.cvdoc--main {
+  border: 2px solid black;
+}
