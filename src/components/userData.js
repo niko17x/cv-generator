@@ -16,14 +16,14 @@ const userData = {
       startDate: "",
       endDate: "",
     },
-    work2: {
-      position: "",
-      company: "",
-      location: "",
-      achievements: "",
-      startDate: "",
-      endDate: "",
-    },
+    // work2: {
+    //   position: "",
+    //   company: "",
+    //   location: "",
+    //   achievements: "",
+    //   startDate: "",
+    //   endDate: "",
+    // },
   },
 };
 
