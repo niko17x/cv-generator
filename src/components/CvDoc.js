@@ -15,6 +15,13 @@ function CvDoc({ name }) {
       <h1>{name.workInfo.work1.achievements}</h1>
       <h1>{name.workInfo.work1.startDate}</h1>
       <h1>{name.workInfo.work1.endDate}</h1>
+      {/* 
+      <h1>{name.workInfo.work2.company}</h1>
+      <h1>{name.workInfo.work2.position}</h1>
+      <h1>{name.workInfo.work2.location}</h1>
+      <h1>{name.workInfo.work2.achievements}</h1>
+      <h1>{name.workInfo.work2.startDate}</h1>
+      <h1>{name.workInfo.work2.endDate}</h1> */}
     </div>
   );
 }
