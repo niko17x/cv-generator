@@ -3,10 +3,12 @@ import GeneralInfo from "./GeneralInfo";
 import WorkInfo from "./WorkInfo";
 import userData from "./userData";
 import CvDoc from "./CvDoc";
+import EducationInfo from "./EducationInfo";
 
 function Form() {
   const [userInfo, setUserInfo] = React.useState(userData);
   const [newWorkInfo, setNewWorkInfo] = React.useState(1); // Default with 1 workInfo Component.
+  const [newEducationInfo, setNewEducationInfo] = React.useState(1);
 
   function handleChange(event, parent, child) {
     const { name, value } = event.target;
@@ -54,16 +56,6 @@ function Form() {
     }
   }
 
-  // Need to generate CvDoc 'work2' if it is truthy :
-  // Go through key key in workInfo object and if 'work2' exists, then generate 'work2' data in CvDocs.
-  function foo() {
-    let result = [];
-    const getWorkObj = userInfo.workInfo;
-    if (getWorkObj.hasOwnProperty("work2")) {
-      return <CvDoc name={getWorkObj.work2.company} />;
-    }
-  }
-
   // Creates a new 'workInfo' component with inputs based on number of 'add button clicks' :
   function addAdditionalWorkForm() {
     let result = [];
@@ -71,7 +63,6 @@ function Form() {
       result.push(
         <div>
           <WorkInfo
-            key={i}
             value={userInfo.workInfo + `${i}`}
             onChange={(event) => handleChange(event, "workInfo", `work${i}`)}
           />
@@ -81,10 +72,52 @@ function Form() {
     return result;
   }
 
-  function handleAddButtonClick() {
+  function addAdditionalEducationObj() {
+    for (let i = 1; i < newEducationInfo + 1; i++) {
+      setUserInfo((prevInfo) => ({
+        ...prevInfo,
+        educationInfo: {
+          ...prevInfo.educationInfo,
+          [`education${i + 1}`]: {
+            university: "",
+            degree: "",
+            gpa: "",
+            awards: "",
+            attended: "",
+            relevantCourses: "",
+          },
+        },
+      }));
+    }
+  }
+
+  function addAdditionalEducationForm() {
+    let result = [];
+    for (let i = 1; i <= newEducationInfo; i++) {
+      result.push(
+        <div>
+          <EducationInfo
+            value={userInfo.educationInfo + `${i}`}
+            onChange={(event) =>
+              handleChange(event, "educationInfo", `education${i}`)
+            }
+          />
+        </div>
+      );
+    }
+    return result;
+  }
+
+  function handleAddWorkInfoBtn() {
     if (newWorkInfo > 4) return;
     setNewWorkInfo((prevInfo) => prevInfo + 1);
     addAdditionalWorkObj();
+  }
+
+  function handleAddEducationInfoBtn() {
+    if (newEducationInfo > 4) return;
+    setNewEducationInfo((prevInfo) => prevInfo + 1);
+    addAdditionalEducationObj();
   }
 
   return (
@@ -96,18 +129,16 @@ function Form() {
             onChange={(event) => handleChange(event, "generalInfo")}
           />
         </div>
-        {/* <div>
-          <WorkInfo
-            value={userInfo.workInfo}
-            onChange={(event) => handleChange(event, "workInfo", "work1")}
-          />
-        </div> */}
         {newWorkInfo && addAdditionalWorkForm()}
+        {newEducationInfo && addAdditionalEducationForm()}
         <button type="submit">Submit</button>
       </form>
-      <CvDoc name={userInfo} />
-      <button className="add" onClick={handleAddButtonClick}>
-        Add
+      <CvDoc name={userInfo} getInfo={userInfo} />
+      <button className="add" onClick={handleAddWorkInfoBtn}>
+        Add WorkInfo
+      </button>
+      <button className="add" onClick={handleAddEducationInfoBtn}>
+        Add EducationInfo
       </button>
     </div>
   );
