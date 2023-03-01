@@ -16,14 +16,16 @@ const userData = {
       startDate: "",
       endDate: "",
     },
-    // work2: {
-    //   position: "",
-    //   company: "",
-    //   location: "",
-    //   achievements: "",
-    //   startDate: "",
-    //   endDate: "",
-    // },
+  },
+  educationInfo: {
+    education1: {
+      university: "",
+      degree: "",
+      attended: "",
+      gpa: "",
+      awards: "",
+      relevantCourses: "",
+    },
   },
 };
 
