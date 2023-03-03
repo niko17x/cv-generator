@@ -4,6 +4,277 @@
   padding: 0;
 }
 
-.cvdoc--main {
-  border: 2px solid black;
+@font-face {
+  font-family: 'Lato';
+  src: url('../../../../../../code/fonts/Lato/Lato/Lato-Black.ttf') format('ttf');
 }
+
+/* *** GENERAL *** */
+label {
+  font-size: 12px;
+  color: rgb(176, 176, 176)
+}
+
+body {
+  display: grid;
+  height: 100vh;
+  width: 100vw;
+  font-family: 'Lato', Georgia, 'Times New Roman', Times, serif;
+  background-color: #F5F5FA;
+}
+
+input,
+textarea {
+  border: 5px solid white; 
+  -webkit-box-shadow: 
+    inset 0 0 8px  rgba(0,0,0,0.1),
+          0 0 16px rgba(0,0,0,0.1); 
+  -moz-box-shadow: 
+    inset 0 0 8px  rgba(0,0,0,0.1),
+          0 0 16px rgba(0,0,0,0.1); 
+  box-shadow: 
+    inset 0 0 8px  rgba(0,0,0,0.1),
+          0 0 16px rgba(0,0,0,0.1); 
+  padding: 1.3rem 1rem;
+  background: rgba(255,255,255,0.5);
+  margin: 0 0 10px 0;
+  border-radius: 3px;
+  font-size: 2rem;
+  position: relative;
+  width: 100%;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+}
+
+button {
+  transition: transform 0.2s ease-in-out;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+.cvdoc--container {
+  display: grid;
+  border: 3px solid black;
+}
+
+.cvdoc--body {
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+  grid-template-rows: 1fr 1fr;
+  height: 800px;
+}
+
+.professional--container {
+  grid-column-start: 2;
+  grid-row-start: 1;
+}
+
+.education--container {
+  grid-column-start: 2;
+  grid-row-start: 2;
+}
+
+/* *** GENERAL INFO SECTION *** */
+.general--container {
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+}
+
+.general--right {
+  display: grid;
+}
+
+.general--left {
+  display: grid;
+  place-content: center;
+  background-color: rgb(50, 86, 65);
+}
+
+.general--left > img {
+  height: 250px;
+  width: 250px;
+}
+
+.profile_name,
+.profile_position {
+  letter-spacing: 2.4px;
+}
+
+.profile_name > h2 {
+  font-size: 5rem;
+  font-weight: 200;
+  font-weight: 800;
+}
+
+.profile_position > h3 {
+  font-size: 1.5rem;
+  font-weight: 200;
+}
+
+.profile_about_me > p {
+  font-size: 0.9rem;
+  font-weight: 200;
+  padding-top: 1rem;
+  opacity: 0.7;
+}
+
+/* !!! */
+
+/* *** CONTACT SECTION *** */
+.cvdoc--body {
+}
+
+.contact--container {
+  background-color: rgb(50, 86, 65);
+  grid-row-start: 1;
+  grid-row-end: 3;
+  padding-top: 2rem;
+}
+
+.contact-info-container {
+  display: grid;
+  height: min-content;
+  padding-left: 2rem;
+  gap: 1rem;
+  color: white;
+}
+
+.contact-info-container > label,
+.contact-info-container > div > label {
+  color: white
+}
+
+.contact_info {
+  font-size: 1.7rem;
+  letter-spacing: 1.5px;
+  border-bottom: 2px solid white;
+}
+
+
+.cvdoc--education_info_header,
+.cvdoc--work_info_header {
+  display: flex;
+  gap: 1rem;
+  font-size: 18px;
+  padding-top: 2rem;
+}
+
+.cvdoc--education_info_body,
+.cvdoc--work_info_body {
+  padding: 5px 0 0 20px;
+
+}
+
+.work_info_title,
+.education_info_title {
+  display: flex;
+  gap: 0.3rem;
+  opacity: 0.5;
+}
+
+
+/* *** FORM COMPONENT *** */
+
+.form--container {
+  width: 100%;
+}
+
+.form--main {
+  border: 3px solid salmon;
+  width: 100%;
+  display: grid;
+  gap: 5rem;
+  padding: 2rem;
+}
+
+.generalInfo--main {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.workInfo--main,
+.educationInfo--main {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+ 
+.generalInfo--main > div > label,
+.workInfo--main > div > label,
+.educationInfo--main > div > label {
+  position: absolute;
+  z-index: 1;
+  padding: 0 7px;
+  font-size: 17px;
+  color: gray;
+  opacity: 0.8;
+}
+
+.input-about-me {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.input-about-me > textarea {
+  resize: none;
+  width: 100%;
+}
+
+.form--title {
+  font-size: 3rem;
+  text-align: left;
+  padding-bottom: 1.5rem;
+}
+
+.button-container {
+  display: grid;
+  grid-template-columns: min-content min-content;
+  place-content: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.section-buttons {
+  align-items: center;
+  background: #f5f5fa;
+  border: 0;
+  border-radius: 8px;
+  box-shadow: -10px -10px 30px 0 #fff,10px 10px 30px 0 #1d0dca17;
+  box-sizing: border-box;
+  color: #2a1f62;
+  cursor: pointer;
+  display: flex;
+  font-size: 1rem;
+  justify-content: center;
+  line-height: 1.5rem;
+  padding: 15px;
+  position: relative;
+  text-align: left;
+  transition: .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: pre;
+  width: 200px;
+  word-break: normal;
+  word-spacing: normal;
+}
+
+.add-work-button {
+  background: #f8f8ff;
+  box-shadow: -15px -15px 30px 0 #fff, 15px 15px 30px 0 #1d0dca17;
+}
+
+@media (min-width: 768px) {
+  .button-67 {
+    padding: 24px;
+  }
+}
+        
