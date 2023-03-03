@@ -58,25 +58,37 @@ button:hover {
 }
 
 .cvdoc--container {
-  display: grid;
   border: 3px solid black;
+  border-radius: 5px;
+  width: 750px;
+  padding: 1rem;
+  place-self: center;
 }
 
 .cvdoc--body {
   display: grid;
   grid-template-columns: 2fr 5fr;
   grid-template-rows: 1fr 1fr;
-  height: 800px;
+  min-height: 500px;
 }
 
 .professional--container {
   grid-column-start: 2;
   grid-row-start: 1;
+  padding-left: 3rem;
 }
 
 .education--container {
   grid-column-start: 2;
   grid-row-start: 2;
+  padding-left: 3rem;
+}
+
+.professional--container > h2,
+.education--container > h2 {
+  font-size: 2.2rem;
+  letter-spacing: 1.5px;
+  border-bottom: 3px solid rgb(50, 86, 65);
 }
 
 /* *** GENERAL INFO SECTION *** */
@@ -87,6 +99,7 @@ button:hover {
 
 .general--right {
   display: grid;
+  padding-left: 3rem;
 }
 
 .general--left {
@@ -96,8 +109,8 @@ button:hover {
 }
 
 .general--left > img {
-  height: 250px;
-  width: 250px;
+  height: 5rem;
+  width: auto;
 }
 
 .profile_name,
@@ -106,9 +119,16 @@ button:hover {
 }
 
 .profile_name > h2 {
-  font-size: 5rem;
-  font-weight: 200;
+  font-size: 7rem;
   font-weight: 800;
+}
+
+.profile_last_name {
+  font-weight: 200;
+}
+
+.profile_last_name::before {
+  content: ' ';
 }
 
 .profile_position > h3 {
@@ -126,8 +146,6 @@ button:hover {
 /* !!! */
 
 /* *** CONTACT SECTION *** */
-.cvdoc--body {
-}
 
 .contact--container {
   background-color: rgb(50, 86, 65);
@@ -181,11 +199,11 @@ button:hover {
 /* *** FORM COMPONENT *** */
 
 .form--container {
-  width: 100%;
+  display: grid;
+  grid-template-rows: min-content min-content;
 }
 
 .form--main {
-  border: 3px solid salmon;
   width: 100%;
   display: grid;
   gap: 5rem;
