@@ -12,7 +12,6 @@ function Professional({ name }) {
             key={Math.floor(Math.random() * 9999)}
           >
             <div className="cvdoc--work_info_main">
-              <h2>Professional Experience</h2>
               <div className="cvdoc--work_info_header">
                 <div>
                   <h3>{name.workInfo[work].startDate}</h3>

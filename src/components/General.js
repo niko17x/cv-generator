@@ -12,7 +12,10 @@ function General({ name }) {
       <div className="general--right">
         <div className="profile_name">
           <h2>
-            <span className="first_name">{name.generalInfo.name}</span>
+            {name.generalInfo.firstName}
+            <span className="profile_last_name">
+              {name.generalInfo.lastName}
+            </span>
           </h2>
         </div>
         <div className="profile_position">

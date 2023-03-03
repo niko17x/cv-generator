@@ -17,7 +17,6 @@ function Education({ name }) {
             className="cvdoc--education_info_main"
             key={Math.floor(Math.random() * 9999)}
           >
-            <h2>Education</h2>
             <div className="cvdoc--education_info_header">
               <div>
                 <h3>{name.educationInfo[education].startDate}</h3>
