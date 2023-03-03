@@ -4,6 +4,9 @@ import WorkInfo from "./WorkInfo";
 import userData from "./userData";
 import CvDoc from "./CvDoc";
 import EducationInfo from "./EducationInfo";
+import General from "./General";
+import Education from "./Education";
+import Professional from "./Professional";
 
 function Form() {
   const [userInfo, setUserInfo] = React.useState(userData);
@@ -29,13 +32,6 @@ function Form() {
     }));
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    const allInputs = document.querySelectorAll("input");
-    allInputs.forEach((input) => (input.value = ""));
-    return e.target.tagName === "FORM" ? console.log(userInfo) : "";
-  }
-
   // Adds another object to the existing userData database :
   function addAdditionalWorkObj() {
     for (let i = 1; i < newWorkInfo + 1; i++) {
@@ -47,9 +43,9 @@ function Form() {
             position: "",
             company: "",
             location: "",
-            achievements: "",
             startDate: "",
             endDate: "",
+            description: "",
           },
         },
       }));
@@ -61,7 +57,7 @@ function Form() {
     let result = [];
     for (let i = 1; i <= newWorkInfo; i++) {
       result.push(
-        <div>
+        <div key={`work${i}`}>
           <WorkInfo
             value={userInfo.workInfo + `${i}`}
             onChange={(event) => handleChange(event, "workInfo", `work${i}`)}
@@ -81,10 +77,9 @@ function Form() {
           [`education${i + 1}`]: {
             university: "",
             degree: "",
+            startDate: "",
+            endDate: "",
             gpa: "",
-            awards: "",
-            attended: "",
-            relevantCourses: "",
           },
         },
       }));
@@ -95,7 +90,7 @@ function Form() {
     let result = [];
     for (let i = 1; i <= newEducationInfo; i++) {
       result.push(
-        <div>
+        <div key={`education${i}`}>
           <EducationInfo
             value={userInfo.educationInfo + `${i}`}
             onChange={(event) =>
@@ -105,41 +100,97 @@ function Form() {
         </div>
       );
     }
-    return result;
+    return result ? result : "null";
   }
 
-  function handleAddWorkInfoBtn() {
-    if (newWorkInfo > 4) return;
+  function addWorkBtn() {
+    if (newWorkInfo > 3) return;
     setNewWorkInfo((prevInfo) => prevInfo + 1);
     addAdditionalWorkObj();
   }
 
-  function handleAddEducationInfoBtn() {
-    if (newEducationInfo > 4) return;
+  function deleteWorkBtn() {
+    return newWorkInfo > 0 ? setNewWorkInfo((prevInfo) => prevInfo - 1) : null;
+  }
+
+  function addEducationBtn() {
+    if (newEducationInfo > 3) return;
     setNewEducationInfo((prevInfo) => prevInfo + 1);
     addAdditionalEducationObj();
   }
 
+  function deleteEducationBtn() {
+    return newEducationInfo > 0
+      ? setNewEducationInfo((prevInfo) => prevInfo - 1)
+      : null;
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const allInputs = document.querySelectorAll("input");
+    allInputs.forEach((input) => (input.value = ""));
+    return e.target.tagName === "FORM" ? console.log(userInfo) : "";
+  }
+
   return (
-    <div className="form--main">
-      <form onSubmit={handleSubmit}>
-        <div className="form--generalInfo_container">
+    <div className="form--container">
+      <form className="form--main" onSubmit={handleSubmit}>
+        <div className="form--general_info_container">
+          <h2 className="form--title">Personal Details</h2>
           <GeneralInfo
             value={userInfo}
             onChange={(event) => handleChange(event, "generalInfo")}
           />
         </div>
-        {newWorkInfo && addAdditionalWorkForm()}
-        {newEducationInfo && addAdditionalEducationForm()}
+        <div>
+          <h2 className="form--title">Professional Experience</h2>
+          {newWorkInfo && addAdditionalWorkForm()}
+          <div className="button-container">
+            {newWorkInfo < 3 && (
+              <button
+                className="add-work-button section-buttons"
+                onClick={addWorkBtn}
+              >
+                Add WorkInfo
+              </button>
+            )}
+
+            {newWorkInfo && (
+              <button
+                className="delete-work-button section-buttons"
+                onClick={deleteWorkBtn}
+              >
+                Delete WorkInfo
+              </button>
+            )}
+          </div>
+        </div>
+        <div>
+          <h2 className="form--title">Education</h2>
+          {newEducationInfo && addAdditionalEducationForm()}
+
+          <div className="button-container">
+            {newEducationInfo < 3 && (
+              <button
+                className="add-education-button section-buttons"
+                onClick={addEducationBtn}
+              >
+                Add EducationInfo
+              </button>
+            )}
+            {newEducationInfo && (
+              <button
+                className="delete-education-button section-buttons"
+                onClick={deleteEducationBtn}
+              >
+                Delete EducationInfo
+              </button>
+            )}
+          </div>
+        </div>
         <button type="submit">Submit</button>
       </form>
       <CvDoc name={userInfo} getInfo={userInfo} />
-      <button className="add" onClick={handleAddWorkInfoBtn}>
-        Add WorkInfo
-      </button>
-      <button className="add" onClick={handleAddEducationInfoBtn}>
-        Add EducationInfo
-      </button>
     </div>
   );
 }
