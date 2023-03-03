@@ -1,7 +1,8 @@
 const userData = {
   generalInfo: {
-    name: "",
-    age: "",
+    firstName: "",
+    lastName: "",
+    currentPosition: "",
     phoneNumber: "",
     email: "",
     address: "",
@@ -12,19 +13,18 @@ const userData = {
       position: "",
       company: "",
       location: "",
-      achievements: "",
       startDate: "",
       endDate: "",
+      description: "",
     },
   },
   educationInfo: {
     education1: {
       university: "",
       degree: "",
-      attended: "",
+      startDate: "",
+      endDate: "",
       gpa: "",
-      awards: "",
-      relevantCourses: "",
     },
   },
 };

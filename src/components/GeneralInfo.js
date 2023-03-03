@@ -1,42 +1,43 @@
 import React from "react";
 
-function GeneralInfo({ value, onChange }, props) {
+function GeneralInfo({ value, onChange }) {
   return (
     <div className="generalInfo--main">
-      <div>
-        <div className="generalInfo--input_name">
-          <label>Name</label>
-          <input
-            name="name"
-            value={value.name}
-            onChange={onChange}
-            foo={props.foo}
-          />
-        </div>
-        <div className="generalInfo--input_age">
-          <label>Age</label>
-          <input name="age" value={value.age} onChange={onChange} />
-        </div>
-        <div className="generalInfo--input_phone_number">
-          <label>Phone Number</label>
-          <input
-            name="phoneNumber"
-            value={value.phoneNumber}
-            onChange={onChange}
-          />
-        </div>
-        <div className="generalInfo--input_email">
-          <label>Email</label>
-          <input name="email" value={value.email} onChange={onChange} />
-        </div>
-        <div className="generalInfo--input_address">
-          <label>Address</label>
-          <input name="address" value={value.address} onChange={onChange} />
-        </div>
-        <div className="generalInfo--input_about_me">
-          <label>About Me</label>
-          <input name="aboutMe" value={value.aboutMe} onChange={onChange} />
-        </div>
+      <div className="input-first-name">
+        <label>First Name</label>
+        <input name="firstName" value={value.firstName} onChange={onChange} />
+      </div>
+      <div className="input-last-name">
+        <label>Last Name</label>
+        <input name="lastName" value={value.lastName} onChange={onChange} />
+      </div>
+      <div className="current-position">
+        <label>Current Position</label>
+        <input
+          name="currentPosition"
+          value={value.currentPosition}
+          onChange={onChange}
+        />
+      </div>
+      <div className="input-phone-number">
+        <label>Phone Number</label>
+        <input
+          name="phoneNumber"
+          value={value.phoneNumber}
+          onChange={onChange}
+        />
+      </div>
+      <div className="input-email">
+        <label>Email</label>
+        <input name="email" value={value.email} onChange={onChange} />
+      </div>
+      <div className="input-address">
+        <label>Address</label>
+        <input name="address" value={value.address} onChange={onChange} />
+      </div>
+      <div className="input-about-me">
+        <label>About Me</label>
+        <textarea name="aboutMe" value={value.aboutMe} onChange={onChange} />
       </div>
     </div>
   );
