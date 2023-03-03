@@ -15,9 +15,11 @@ function CvDoc({ name }) {
           <ContactSection name={name} />
         </div>
         <div className="professional--container">
+          <h2>Experience</h2>
           <Professional name={name} />
         </div>
         <div className="education--container">
+          <h2>Education</h2>
           <Education name={name} />
         </div>
       </div>
