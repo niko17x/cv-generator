@@ -4,9 +4,6 @@ import WorkInfo from "./WorkInfo";
 import userData from "./userData";
 import CvDoc from "./CvDoc";
 import EducationInfo from "./EducationInfo";
-import General from "./General";
-import Education from "./Education";
-import Professional from "./Professional";
 
 function Form() {
   const [userInfo, setUserInfo] = React.useState(userData);
@@ -103,27 +100,45 @@ function Form() {
     return result ? result : "null";
   }
 
-  function addWorkBtn() {
+  function addWorkBtn(e) {
+    e.preventDefault();
     if (newWorkInfo > 3) return;
     setNewWorkInfo((prevInfo) => prevInfo + 1);
     addAdditionalWorkObj();
+    // console.log(userInfo);
   }
 
-  function deleteWorkBtn() {
-    return newWorkInfo > 0 ? setNewWorkInfo((prevInfo) => prevInfo - 1) : null;
+  // ? Filter the object property looking to be deleted then see if property currently exists in 'userInfo' and if it is, then delete entire object.
+  function deleteWorkBtn(e) {
+    e.preventDefault();
+    const objPropertyName = `work${newWorkInfo}`; // => Get matching object property.
+    const updatedUserInfo = { ...userInfo };
+    if (newWorkInfo > 1) {
+      setNewWorkInfo((prevInfo) => prevInfo - 1);
+      delete updatedUserInfo.workInfo[objPropertyName];
+    }
+    setUserInfo(updatedUserInfo);
   }
 
-  function addEducationBtn() {
+  function addEducationBtn(e) {
+    e.preventDefault();
     if (newEducationInfo > 3) return;
     setNewEducationInfo((prevInfo) => prevInfo + 1);
     addAdditionalEducationObj();
   }
 
-  function deleteEducationBtn() {
-    return newEducationInfo > 0
-      ? setNewEducationInfo((prevInfo) => prevInfo - 1)
-      : null;
+  function deleteEducationBtn(e) {
+    e.preventDefault();
+    const updatedUserInfo = { ...userInfo };
+    const objPropertyName = `education${newEducationInfo}`;
+    if (newEducationInfo > 1) {
+      setNewEducationInfo((prevInfo) => prevInfo - 1);
+      delete updatedUserInfo.educationInfo[objPropertyName];
+    }
+    setUserInfo(updatedUserInfo);
   }
+
+  console.log(userInfo.educationInfo);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -151,16 +166,16 @@ function Form() {
                 className="add-work-button section-buttons"
                 onClick={addWorkBtn}
               >
-                Add WorkInfo
+                Add
               </button>
             )}
 
-            {newWorkInfo && (
+            {newWorkInfo > 1 && (
               <button
                 className="delete-work-button section-buttons"
                 onClick={deleteWorkBtn}
               >
-                Delete WorkInfo
+                Delete
               </button>
             )}
           </div>
@@ -175,20 +190,22 @@ function Form() {
                 className="add-education-button section-buttons"
                 onClick={addEducationBtn}
               >
-                Add EducationInfo
+                Add
               </button>
             )}
-            {newEducationInfo && (
+            {newEducationInfo > 1 && (
               <button
                 className="delete-education-button section-buttons"
                 onClick={deleteEducationBtn}
               >
-                Delete EducationInfo
+                Delete
               </button>
             )}
           </div>
         </div>
-        <button type="submit">Submit</button>
+        <button className="submit--form" type="submit">
+          Submit
+        </button>
       </form>
       <CvDoc name={userInfo} getInfo={userInfo} />
     </div>
