@@ -4,8 +4,26 @@ import WorkInfo from "./WorkInfo";
 import userData from "./userData";
 import CvDoc from "./CvDoc";
 import EducationInfo from "./EducationInfo";
+import ProfileImg from "./ProfileImg";
+
+window.addEventListener("click", (e) => {
+  console.log(e.target);
+});
 
 function Form() {
+  // !!!
+  // ? The issue is the function does not change the state to the required url.
+  // Todo: Differentiate the change event based on a specific target.
+  const [imageSrc, setImageSrc] = React.useState("");
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    const imageUrl = URL.createObjectURL(file);
+    setImageSrc(imageUrl);
+    // props.onFileChange(imageUrl);
+  };
+  // !!!
+
   const [userInfo, setUserInfo] = React.useState(userData);
   const [newWorkInfo, setNewWorkInfo] = React.useState(1); // Default with 1 workInfo Component.
   const [newEducationInfo, setNewEducationInfo] = React.useState(1);
@@ -108,10 +126,9 @@ function Form() {
     // console.log(userInfo);
   }
 
-  // ? Filter the object property looking to be deleted then see if property currently exists in 'userInfo' and if it is, then delete entire object.
   function deleteWorkBtn(e) {
     e.preventDefault();
-    const objPropertyName = `work${newWorkInfo}`; // => Get matching object property.
+    const objPropertyName = `work${newWorkInfo}`; // => Get 'work1, 2 or 3' based on newWorkInfo state.
     const updatedUserInfo = { ...userInfo };
     if (newWorkInfo > 1) {
       setNewWorkInfo((prevInfo) => prevInfo - 1);
@@ -138,8 +155,6 @@ function Form() {
     setUserInfo(updatedUserInfo);
   }
 
-  console.log(userInfo.educationInfo);
-
   function handleSubmit(e) {
     e.preventDefault();
     const allInputs = document.querySelectorAll("input");
@@ -156,6 +171,7 @@ function Form() {
             value={userInfo}
             onChange={(event) => handleChange(event, "generalInfo")}
           />
+          <ProfileImg handleFileChange={handleFileChange} />
         </div>
         <div>
           <h2 className="form--title">Professional Experience</h2>
@@ -207,7 +223,7 @@ function Form() {
           Submit
         </button>
       </form>
-      <CvDoc name={userInfo} getInfo={userInfo} />
+      <CvDoc name={userInfo} getInfo={userInfo} showProfileImg={imageSrc} />
     </div>
   );
 }
