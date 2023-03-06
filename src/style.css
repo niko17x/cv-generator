@@ -24,7 +24,8 @@ body {
 }
 
 input,
-textarea {
+textarea,
+.profile-image > label {
   border: 5px solid white; 
   -webkit-box-shadow: 
     inset 0 0 8px  rgba(0,0,0,0.1),
@@ -40,7 +41,7 @@ textarea {
   background: rgba(255,255,255,0.5);
   margin: 0 0 10px 0;
   border-radius: 3px;
-  font-size: 2rem;
+  font-size: 1.6rem;
   position: relative;
   width: 100%;
 }
@@ -105,13 +106,14 @@ button:hover {
 
 .general--left {
   display: grid;
+  height: 150px;
   place-content: center;
   background-color: rgb(50, 86, 65);
 }
 
 .general--left > img {
-  height: 5rem;
-  width: auto;
+  height: 120px;
+  width: 170px;
 }
 
 .profile_name,
@@ -304,6 +306,19 @@ button:hover {
 
 .submit--form {
   width: 70%;
-  place-self: center;
-  
+  place-self: center; 
+}
+
+.profile-image {
+  display: grid;
+  width: 100%;
+  place-content: center;
+}
+
+.profile-image > label {
+  cursor: pointer;
+}
+
+.profile-image > input {
+  display: none;
 }
