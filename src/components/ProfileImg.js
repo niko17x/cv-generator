@@ -3,7 +3,7 @@ import React from "react";
 function ProfileImg(props) {
   return (
     <div className="profile-image">
-      <label for="img">Upload Image</label>
+      <label htmlFor="img">Upload Image</label>
       <input
         type="file"
         id="img"

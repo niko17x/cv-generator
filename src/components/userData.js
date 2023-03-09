@@ -1,5 +1,6 @@
 const userData = {
   generalInfo: {
+    imageUrl: "",
     firstName: "",
     lastName: "",
     currentPosition: "",

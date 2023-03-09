@@ -5,16 +5,28 @@ function GeneralInfo({ value, onChange }) {
     <div className="generalInfo--main">
       <div className="input-first-name">
         <label>First Name</label>
-        <input name="firstName" value={value.firstName} onChange={onChange} />
+        <input
+          name="firstName"
+          required
+          value={value.firstName}
+          onChange={onChange}
+        />
+        {/* {!value.firstName ? <span>First name is required</span> : null} */}
       </div>
       <div className="input-last-name">
         <label>Last Name</label>
-        <input name="lastName" value={value.lastName} onChange={onChange} />
+        <input
+          name="lastName"
+          required
+          value={value.lastName}
+          onChange={onChange}
+        />
       </div>
       <div className="current-position">
         <label>Current Position</label>
         <input
           name="currentPosition"
+          required
           value={value.currentPosition}
           onChange={onChange}
         />
@@ -23,13 +35,21 @@ function GeneralInfo({ value, onChange }) {
         <label>Phone Number</label>
         <input
           name="phoneNumber"
+          type="tel"
+          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+          placeholder="123.456.7890"
           value={value.phoneNumber}
           onChange={onChange}
         />
       </div>
       <div className="input-email">
         <label>Email</label>
-        <input name="email" value={value.email} onChange={onChange} />
+        <input
+          name="email"
+          // type="email"
+          value={value.email}
+          onChange={onChange}
+        />
       </div>
       <div className="input-address">
         <label>Address</label>

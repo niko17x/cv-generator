@@ -21,7 +21,7 @@ function Education({ name }) {
               <div>
                 <h3>{name.educationInfo[education].startDate}</h3>
               </div>
-              -
+              {name.educationInfo[education].startDate ? " " : ""}
               <div>
                 <h3>{name.educationInfo[education].endDate}</h3>
               </div>
@@ -32,7 +32,8 @@ function Education({ name }) {
               </div>
               <div>
                 <h4 className="education_info_title">
-                  {name.educationInfo[education].degree} |
+                  {name.educationInfo[education].degree}
+                  {name.educationInfo[education].degree ? " | " : ""}
                   {name.educationInfo[education].gpa}
                 </h4>
               </div>

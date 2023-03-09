@@ -1,14 +1,14 @@
+// INFORMATION INSIDE THE CV APPLICATION :
 import React from "react";
-import Education from "./Education";
-import Professional from "./Professional";
+import ProfileImg from "./ProfileImg";
 
-function General({ name }) {
+function General({ name, showProfileImg }) {
   return (
     <div className="general--container">
       <div className="general--left">
-        <img src="../profile-img-outline.svg" alt="" />
+        {/* Profile image should be shown here. */}
+        <img className="profile_image" src={showProfileImg} alt="" />
       </div>
-
       <div className="general--right">
         <div className="profile_name">
           <h2>

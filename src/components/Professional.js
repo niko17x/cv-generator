@@ -16,7 +16,8 @@ function Professional({ name }) {
                 <div>
                   <h3>{name.workInfo[work].startDate}</h3>
                 </div>
-                -
+                {/* - */}
+                {name.workInfo[work].startDate ? "-" : ""}
                 <div>
                   <h3>{name.workInfo[work].endDate}</h3>
                 </div>
@@ -27,7 +28,8 @@ function Professional({ name }) {
                 </div>
                 <div className="work_info_title">
                   <h4>
-                    {name.workInfo[work].company} |{" "}
+                    {name.workInfo[work].company}
+                    {name.workInfo[work].company ? " | " : ""}
                     {name.workInfo[work].location}
                   </h4>
                 </div>

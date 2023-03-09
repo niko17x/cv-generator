@@ -4,12 +4,13 @@ import Education from "./Education";
 import General from "./General";
 import Professional from "./Professional";
 
-function CvDoc({ name }) {
+function CvDoc({ name, showProfileImg }) {
   return (
     <div className="cvdoc--container">
       <div className="cvdoc--header">
-        <General name={name} />
+        <General name={name} showProfileImg={showProfileImg} />
       </div>
+
       <div className="cvdoc--body">
         <div className="contact--container">
           <ContactSection name={name} />

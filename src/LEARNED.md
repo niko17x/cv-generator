@@ -11,3 +11,11 @@ Feb. 28
 
 Mar. 2
 • In a component, when trying to render a local function, the function must be called (i.e. => use parenthesis) otherwise you get the error => 'Functions are not valid as a React child. This may happen if you return a Component instead of <Component /> from render. Or maybe you meant to call this function rather than return it.'
+• In CSS, you can specifically place where you want the element to be by first having the parent element obtain the display: grid property and then having child elements with 'grid-row-start' and 'grid-row-end' to customize placement.
+• In CSS, when changing the size of a container, a reaction will occur where the container will be shifted to the natural left position on the page. The way I was able to get it centered is by giving the parent element 'display: grid' and then using 'place-self: center' on the child container.
+
+Mar. 3
+• A bug has caused an issue where when the user had data input and then clicked on add/delete button, it wiped out all the existing data inside the input in the form component. In order to fix this bug, I had to edit the button click event functions. For the delete event, I had to store all the existing data in current state to a variable using 'const updatedState = { ...stateDataHere }' and later return that variable after making changes to it (deleting specific object property key). I was able to delete obj by using 'delete updatedState.obj_property_key_name' and once deleted, updating original state by doing 'setOriginalState(updatedState) which ended up returning all the previous state excluding the deleted object property.
+
+Mar. 6
+• When you have a input type file and accepts image, you can customize what is said inside the input element by hiding the actual input and editing the <label> tag inside the same div as the input. This is done by using `display: none` on the input element and having the attribute `for` as the same value for both input and label. 

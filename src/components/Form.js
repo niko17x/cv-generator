@@ -6,24 +6,12 @@ import CvDoc from "./CvDoc";
 import EducationInfo from "./EducationInfo";
 import ProfileImg from "./ProfileImg";
 
-window.addEventListener("click", (e) => {
-  console.log(e.target);
-});
+// window.addEventListener("click", (e) => {
+//   console.log(e.target);
+// });
 
 function Form() {
-  // !!!
-  // ? The issue is the function does not change the state to the required url.
-  // Todo: Differentiate the change event based on a specific target.
-  const [imageSrc, setImageSrc] = React.useState("");
-
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    const imageUrl = URL.createObjectURL(file);
-    setImageSrc(imageUrl);
-    // props.onFileChange(imageUrl);
-  };
-  // !!!
-
+  const [imageSrc, setImageSrc] = React.useState("../profile-img-outline.svg");
   const [userInfo, setUserInfo] = React.useState(userData);
   const [newWorkInfo, setNewWorkInfo] = React.useState(1); // Default with 1 workInfo Component.
   const [newEducationInfo, setNewEducationInfo] = React.useState(1);
@@ -46,6 +34,13 @@ function Form() {
       },
     }));
   }
+
+  // User profile image upload.
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    const imageUrl = URL.createObjectURL(file);
+    setImageSrc(imageUrl);
+  };
 
   // Adds another object to the existing userData database :
   function addAdditionalWorkObj() {
@@ -171,7 +166,9 @@ function Form() {
             value={userInfo}
             onChange={(event) => handleChange(event, "generalInfo")}
           />
-          <ProfileImg handleFileChange={handleFileChange} />
+          <div className="form--profile-image">
+            <ProfileImg handleFileChange={handleFileChange} />
+          </div>
         </div>
         <div>
           <h2 className="form--title">Professional Experience</h2>
